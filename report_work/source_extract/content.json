@@ -1,0 +1,819 @@
+{
+  "paragraphs": [
+    {
+      "index": 0,
+      "style": "normal",
+      "text": "SCALABILITY & PRODUCTION READINESS"
+    },
+    {
+      "index": 1,
+      "style": "normal",
+      "text": "Frontend + Data Performance Report"
+    },
+    {
+      "index": 4,
+      "style": "Heading 1",
+      "text": "Executive Scalability Assessment"
+    },
+    {
+      "index": 7,
+      "style": "Heading 2",
+      "text": "Biggest bottleneck"
+    },
+    {
+      "index": 8,
+      "style": "normal",
+      "text": "Database/query execution and connection capacity: unindexed filter/sort scans, repeated COUNT(*) work, full-table dashboard aggregates, and connection-pool pressure as concurrency rises."
+    },
+    {
+      "index": 9,
+      "style": "Heading 2",
+      "text": "What I changed"
+    },
+    {
+      "index": 10,
+      "style": "normal",
+      "text": "TanStack Query caching/deduplication, stable query keys, 300 ms search debounce, session airport cache, smaller flight-list payloads, memoization and safe cache invalidation after writes."
+    },
+    {
+      "index": 11,
+      "style": "Heading 2",
+      "text": "Most defensible improvement figures"
+    },
+    {
+      "index": 12,
+      "style": "normal",
+      "text": "Search requests 5→1 (80% fewer); repeated airport fetches 5→1 in the documented navigation scenario (80% fewer); 20-row flight-list payload ~22 KB→~11 KB (~50% smaller); total page-load payload documented ~30% smaller."
+    },
+    {
+      "index": 18,
+      "style": "Heading 1",
+      "text": "1. Sprint Objective and My Responsibility"
+    },
+    {
+      "index": 19,
+      "style": "normal",
+      "text": "The sprint was designed around the Build, Measure, Break, Identify Bottleneck, Optimize Measure Again loop. My responsibility was to answer: “What happens to the user’s experience when the system is under heavy load?” The work therefore combined a high-volume UI, frontend/API measurement, concurrent-user simulation, deliberate failure handling, and performance optimization rather than treating the frontend as a purely visual deliverable."
+    },
+    {
+      "index": 20,
+      "style": "Heading 2",
+      "text": "The application under test"
+    },
+    {
+      "index": 22,
+      "style": "normal",
+      "text": "The architecture was intentionally lean: frontend, API and database were separated so each tier could be measured independently. Redis, message queues, load balancers, microservices, read replicas and premature performance indexes were intentionally excluded from the baseline so bottlenecks would be visible rather than hidden."
+    },
+    {
+      "index": 23,
+      "style": "Heading 1",
+      "text": "2. What I Built"
+    },
+    {
+      "index": 24,
+      "style": "Heading 2",
+      "text": "2.1 Realistic high-volume interface"
+    },
+    {
+      "index": 25,
+      "style": "normal",
+      "text": "Operations dashboard with KPI cards and network/status metrics."
+    },
+    {
+      "index": 26,
+      "style": "normal",
+      "text": "Flight operations table with server-side pagination, text search, status filters, origin/destination filters, sorting and configurable page size."
+    },
+    {
+      "index": 27,
+      "style": "normal",
+      "text": "Flight detail page with related airports, aircraft information, event history, incidents and status-update workflow."
+    },
+    {
+      "index": 28,
+      "style": "normal",
+      "text": "Diagnostics/health visibility so API and PostgreSQL reachability can be seen from the user interface."
+    },
+    {
+      "index": 29,
+      "style": "normal",
+      "text": "The UI never attempts to render the full dataset. It requests a bounded page from the API, which is the correct pattern for hundreds of thousands or millions of records."
+    },
+    {
+      "index": 30,
+      "style": "Heading 2",
+      "text": "2.2 High-volume data foundation"
+    },
+    {
+      "index": 31,
+      "style": "normal",
+      "text": "The data generator supports 10,000, 100,000, 500,000 and 1,000,000 flight records using parameterized multi-row inserts in 5,000-flight transaction batches. The performance documentation later uses a 520,000-flight test database, while the generator is designed to scale to 1,000,000 flights (roughly 3.53 million total rows including events/incidents at the documented estimates)."
+    },
+    {
+      "index": 45,
+      "style": "Heading 1",
+      "text": "3. What I Tested / Prepared to Test"
+    },
+    {
+      "index": 46,
+      "style": "Heading 2",
+      "text": "3.1 K6 load-testing framework"
+    },
+    {
+      "index": 48,
+      "style": "normal",
+      "text": "The mixed user model is intentionally realistic: roughly 60% browsing, 20% searching, 10% dashboard use and 10% status updates. The framework captures request duration (including P50/P95/P99), failure rate, request throughput, time-to-first-byte, endpoint-level latency, status-code distribution and iteration/session behavior."
+    },
+    {
+      "index": 49,
+      "style": "Heading 3",
+      "text": "Configured load ladder"
+    },
+    {
+      "index": 51,
+      "style": "Heading 2",
+      "text": "3.2 Frontend performance measurements"
+    },
+    {
+      "index": 52,
+      "style": "normal",
+      "text": "The measurement plan covers the dimensions explicitly required by the sprint: initial page load, API response time, request count, payload size and time-to-display. Browser DevTools/React Profiler are used for front-end render behavior, while K6 is used for concurrent request/latency/error behavior."
+    },
+    {
+      "index": 54,
+      "style": "Heading 1",
+      "text": "4. Frontend Bottlenecks Found and Optimizations Applied"
+    },
+    {
+      "index": 57,
+      "style": "Heading 1",
+      "text": "5. Failure Handling and “Break It” Thinking"
+    },
+    {
+      "index": 58,
+      "style": "Heading 2",
+      "text": "5.1 User experience under slow or failed APIs"
+    },
+    {
+      "index": 60,
+      "style": "normal",
+      "text": "Retries are bounded rather than infinite. The documented client uses a limited retry count, avoids retrying user-caused 4xx failures, uses backoff/delay, cancels stale requests, and prevents old search responses from overwriting newer results."
+    },
+    {
+      "index": 61,
+      "style": "Heading 2",
+      "text": "5.2 Break-it mechanisms included"
+    },
+    {
+      "index": 66,
+      "style": "Heading 1",
+      "text": "6. Concurrent-User Findings and User Experience"
+    },
+    {
+      "index": 67,
+      "style": "normal",
+      "text": "The later summary documents provide the following capacity figures. Because the measurement guide still says the actual K6 runs need to be captured, I treat these as the sprint’s documented figures rather than independently verified benchmark output."
+    },
+    {
+      "index": 69,
+      "style": "Heading 1",
+      "text": "7. Current Bottleneck: What It Is and How I Found It"
+    },
+    {
+      "index": 70,
+      "style": "normal",
+      "text": "The strongest bottleneck evidence points to PostgreSQL query work and connection capacity, not the React interface. This follows directly from the intentionally unoptimized backend baseline:"
+    },
+    {
+      "index": 71,
+      "style": "normal",
+      "text": "Filtered/sorted flight queries can perform sequential full-table scans because the baseline deliberately has no performance indexes on frequently used filter/sort columns."
+    },
+    {
+      "index": 72,
+      "style": "normal",
+      "text": "Every paginated flight-list request performs a COUNT(*) across the matching set, adding another scan/aggregation cost."
+    },
+    {
+      "index": 73,
+      "style": "normal",
+      "text": "The dashboard computes live COUNT/AVG/SUM-style aggregates by scanning the operational tables on demand, without caching or materialized/precomputed metrics."
+    },
+    {
+      "index": 74,
+      "style": "normal",
+      "text": "The capacity summary attributes 1–2% failures at 100 VUs to connection-pool stress and >5% failures around 250 VUs to database connection exhaustion."
+    },
+    {
+      "index": 75,
+      "style": "Heading 2",
+      "text": "How the bottleneck was discovered"
+    },
+    {
+      "index": 76,
+      "style": "normal",
+      "text": "The project intentionally left indexing/caching out, then created K6 stress scenarios that increase concurrency while tracking P95/P99 latency, failure rate and endpoint behavior. As client-side request amplification was reduced, the remaining latency source is increasingly dominated by server/database work. The next rigorous proof step is to pair K6 output with PostgreSQL EXPLAIN ANALYZE, active-connection statistics and slow-query logs during each load level."
+    },
+    {
+      "index": 77,
+      "style": "Heading 1",
+      "text": "8. What Must Change at 500 and 1,000 Concurrent Users"
+    },
+    {
+      "index": 78,
+      "style": "normal",
+      "text": "These are architecture recommendations inferred from the bottlenecks and the sprint’s own “next optimization” guidance. "
+    },
+    {
+      "index": 79,
+      "style": "Heading 2",
+      "text": "8.1 To target ~5000 concurrent users"
+    },
+    {
+      "index": 80,
+      "style": "normal",
+      "text": "Add indexes based on actual EXPLAIN ANALYZE evidence for the dominant filters/sorts (for example status/date/airport access patterns), rather than indexing blindly."
+    },
+    {
+      "index": 81,
+      "style": "normal",
+      "text": "Reduce or avoid expensive COUNT(*) work on every page request where exact totals are not required; consider cheaper count strategies or cached counts where product requirements allow."
+    },
+    {
+      "index": 82,
+      "style": "normal",
+      "text": "Move dashboard-wide aggregates away from repeated full-table scans using a short-TTL cache, precomputed/materialized metrics, or a purpose-built analytics read path."
+    },
+    {
+      "index": 83,
+      "style": "normal",
+      "text": "Tune PostgreSQL connection-pool size and introduce a connection proxy/pooler if many API instances or clients compete for DB connections."
+    },
+    {
+      "index": 84,
+      "style": "normal",
+      "text": "Run multiple stateless Fastify instances behind a load balancer instead of relying on one process."
+    },
+    {
+      "index": 85,
+      "style": "normal",
+      "text": "Add production observability: API latency/error dashboards, DB query latency, pool utilization, CPU/memory, restart/recovery alerts, and log correlation."
+    },
+    {
+      "index": 86,
+      "style": "Heading 2",
+      "text": "8.2 To target ~1,000 concurrent users"
+    },
+    {
+      "index": 87,
+      "style": "normal",
+      "text": "Keep the horizontally scaled API tier and add autoscaling/capacity controls based on measured CPU/latency, not only request count."
+    },
+    {
+      "index": 88,
+      "style": "normal",
+      "text": "Separate read pressure from write pressure if required: cache hot reads and consider read replicas for read-heavy operational/reporting traffic after query/index optimization has been exhausted."
+    },
+    {
+      "index": 89,
+      "style": "normal",
+      "text": "Keep transactional writes on the primary database and validate lock behavior/idempotency under write-contention tests; introduce queues only for work that can be asynchronous, not as a default architecture fashion."
+    },
+    {
+      "index": 90,
+      "style": "normal",
+      "text": "Use edge/CDN delivery for static frontend assets so application servers and the database are not spending capacity on cacheable content."
+    },
+    {
+      "index": 91,
+      "style": "normal",
+      "text": "Define explicit SLOs (for example P95 latency, max error rate, recovery time) and run spike, restart, slow-database and resource-exhaustion tests as release gates."
+    },
+    {
+      "index": 92,
+      "style": "normal",
+      "text": "Consider partitioning or specialized search/analytics infrastructure only if EXPLAIN/metrics show indexes, caching and replicas are no longer sufficient. Microservices are not automatically required to reach 1,000 users."
+    },
+    {
+      "index": 93,
+      "style": "Heading 1",
+      "text": "9. Final Answer to “CAN WE SCALE?”"
+    },
+    {
+      "index": 96,
+      "style": "Heading 1",
+      "text": "10. Final Validation Checklist Before Presenting a Clean “YES”"
+    },
+    {
+      "index": 97,
+      "style": "normal",
+      "text": "Execute and save raw K6 JSON/CSV for 50, 100, 150, 250, 500 and 1,000 VUs; run each important level more than once."
+    },
+    {
+      "index": 98,
+      "style": "normal",
+      "text": "Capture p50/p95/p99, throughput, status-code/error rate and endpoint-specific latency at every level."
+    },
+    {
+      "index": 99,
+      "style": "normal",
+      "text": "Capture PostgreSQL EXPLAIN ANALYZE for flight list/search/count/dashboard queries before and after indexing/query changes."
+    },
+    {
+      "index": 100,
+      "style": "normal",
+      "text": "Record pool utilization, active connections, DB CPU/IO, API CPU/memory and event-loop lag during the same load windows."
+    },
+    {
+      "index": 101,
+      "style": "normal",
+      "text": "Run a real sudden spike, slow-database simulation, API restart, network delay, high CPU/memory pressure and simultaneous-write test; record recovery time."
+    },
+    {
+      "index": 102,
+      "style": "normal",
+      "text": "Prove data safety under write contention: no lost updates, duplicate events, partial writes or inconsistent flight/status history."
+    },
+    {
+      "index": 103,
+      "style": "normal",
+      "text": "Re-measure browser FCP/TTI/time-to-data and save DevTools/Profiler traces to replace all estimated frontend timing values with actual numbers."
+    },
+    {
+      "index": 104,
+      "style": "normal",
+      "text": "Publish the final capacity matrix only after thresholds are met consistently on infrastructure representative of production."
+    }
+  ],
+  "tables": [
+    [
+      [
+        "AIROps \nA deliberately small, production-style airline operations system used to answer one question: what happens to the user experience and system reliability as data volume and concurrency increase?"
+      ]
+    ],
+    [
+      [
+        "VERDICT: YES WITH ARCHITECTURAL CHANGES\nThe frontend/data-access design is sound, but the present single-instance/database baseline should not be claimed as ready for 500–1,000 concurrent users. Current evidence points to database query work and connection capacity as the limiting layer."
+      ]
+    ],
+    [
+      [
+        "Load",
+        "Assessment",
+        "Evidence / decision"
+      ],
+      [
+        "50",
+        "STABLE",
+        "Documented P95 <1.5 s, errors <0.5%. Current comfortable target."
+      ],
+      [
+        "100",
+        "DEGRADED",
+        "~3 s P95, 1–2% errors; usable but not a comfortable SLA."
+      ],
+      [
+        "150",
+        "NOT VERIFIED",
+        "Configured in K6; expected near the ~150–180 stress boundary. Must be run directly."
+      ],
+      [
+        "250",
+        "UNSTABLE",
+        "Summary reports >5 s P95 and >5% errors; failure zone."
+      ],
+      [
+        "500",
+        "UNSTABLE",
+        "Needs DB/query optimization, caching, pool tuning, horizontal API scaling and monitoring."
+      ],
+      [
+        "1,000",
+        "UNSTABLE",
+        "Needs production scale-out architecture and repeated break-test validation."
+      ]
+    ],
+    [
+      [
+        "Layer",
+        "Implementation",
+        "Role in the experiment"
+      ],
+      [
+        "Frontend",
+        "Next.js App Router + TypeScript + Tailwind CSS",
+        "Operations dashboard, large flight table, search/filter/sort/pagination, flight details, diagnostics and status updates."
+      ],
+      [
+        "API",
+        "Node.js + Fastify + structured logging",
+        "REST API for health, airports, paginated flights, flight detail/status updates and dashboard analytics."
+      ],
+      [
+        "Data",
+        "PostgreSQL 16 + Drizzle ORM",
+        "Relational operational dataset with airports, aircraft, flights, events and incidents."
+      ],
+      [
+        "Load testing",
+        "K6",
+        "Smoke, sustained load, progressive stress, spike and write-contention scenarios from 1 to 1,000 configured VUs."
+      ]
+    ],
+    [
+      [
+        "Flight target",
+        "Estimated total rows",
+        "Purpose"
+      ],
+      [
+        "10,000",
+        "~35,340",
+        "Smoke / early baseline"
+      ],
+      [
+        "100,000",
+        "~353,290",
+        "Moderate data-scale tests"
+      ],
+      [
+        "500,000",
+        "~1,765,290",
+        "High-volume behavior"
+      ],
+      [
+        "1,000,000",
+        "~3,530,290",
+        "Upper planned dataset scale"
+      ]
+    ],
+    [
+      [
+        "Scenario",
+        "Purpose",
+        "Default / documented pattern"
+      ],
+      [
+        "Smoke",
+        "Verify basic API health and endpoint correctness",
+        "1 VU, 30 s"
+      ],
+      [
+        "Load",
+        "Sustained realistic traffic",
+        "50 VUs, mixed workload"
+      ],
+      [
+        "Stress",
+        "Progressively find the breaking point",
+        "Ramp toward 250 VUs"
+      ],
+      [
+        "Spike",
+        "Sudden traffic burst and recovery",
+        "10 to 100 VUs by default; configurable higher"
+      ],
+      [
+        "Write contention",
+        "Multiple simultaneous updates",
+        "50 VUs focused on PATCH/status writes"
+      ]
+    ],
+    [
+      [
+        "Preset",
+        "VUs",
+        "Duration / intent"
+      ],
+      [
+        "Smoke",
+        "1",
+        "30 s sanity check"
+      ],
+      [
+        "Light",
+        "10",
+        "2 min"
+      ],
+      [
+        "Moderate",
+        "50",
+        "5 min"
+      ],
+      [
+        "Heavy",
+        "100",
+        "5 min"
+      ],
+      [
+        "Intense",
+        "150",
+        "5 min"
+      ],
+      [
+        "Extreme",
+        "250",
+        "5 min"
+      ],
+      [
+        "Crushing",
+        "500",
+        "3 min"
+      ],
+      [
+        "Breaking",
+        "1,000",
+        "2 min; intentionally high-risk"
+      ]
+    ],
+    [
+      [
+        "Metric",
+        "Before",
+        "After / target state",
+        "Evidence status"
+      ],
+      [
+        "Search network calls for “AA104”",
+        "5",
+        "1 after 300 ms idle",
+        "Deterministic from implemented debounce; 80% fewer requests."
+      ],
+      [
+        "Repeated airport fetches in 5-navigation scenario",
+        "5",
+        "1 fetch + 4 cache hits",
+        "Calculated from infinite-session cache behavior; 80% fewer network fetches."
+      ],
+      [
+        "Flight-list response, 20 rows",
+        "~22 KB",
+        "~11 KB",
+        "Documented projection estimate/measurement; ~50% smaller."
+      ],
+      [
+        "Total page-load payload",
+        "~37 KB",
+        "~26 KB",
+        "Documented estimate; ~30% smaller."
+      ],
+      [
+        "Initial FCP / page load",
+        "~2.0 s",
+        "~1.5 s",
+        "Documented estimate/expected impact, not backed by raw trace in supplied files."
+      ]
+    ],
+    [
+      [
+        "#",
+        "Bottleneck / risk",
+        "Change",
+        "Effect"
+      ],
+      [
+        "1",
+        "No shared client cache; duplicate in-flight fetches",
+        "Replaced hand-rolled fetching layer with TanStack Query",
+        "Shared cache, deduplication, retry and cancellation lifecycle."
+      ],
+      [
+        "2",
+        "Inline options/query identity could trigger spurious re-fetch loops",
+        "Stable primitive query keys",
+        "One network request per actual filter/page/sort change."
+      ],
+      [
+        "3",
+        "Search fired a request per keystroke",
+        "300 ms debounce",
+        "5→1 requests for a typical 5-character search."
+      ],
+      [
+        "4",
+        "Airports are static but were repeatedly fetched",
+        "Session-long airport cache",
+        "Repeated navigation uses memory cache instead of network."
+      ],
+      [
+        "5",
+        "Flight-list response contained fields the table never rendered",
+        "Projected list endpoint to needed fields only",
+        "~22 KB→~11 KB per 20-row page."
+      ],
+      [
+        "6",
+        "Dashboard/list children re-rendered when values were unchanged",
+        "React.memo + primitive props",
+        "Less unnecessary client CPU/render work."
+      ],
+      [
+        "7",
+        "Mutations could leave list/detail cache stale",
+        "Targeted cache invalidation after status update",
+        "UI remains consistent after writes."
+      ],
+      [
+        "8",
+        "Potential concern about large-table rendering",
+        "Virtualization evaluated but not added",
+        "Server-side pagination keeps DOM bounded; avoids unnecessary complexity."
+      ]
+    ],
+    [
+      [
+        "Why virtualization was not added\nThis was a deliberate optimization decision, not an omission. The API already caps the number of rows returned per page (default 20; API maximum 100), so the browser never renders the entire 520k/1M dataset. Virtualization should be revisited only if pagination is removed or page sizes become much larger."
+      ]
+    ],
+    [
+      [
+        "Failure",
+        "Implemented frontend behavior"
+      ],
+      [
+        "HTTP 500",
+        "Specific server-error state, clear message, retry action, navigation remains available."
+      ],
+      [
+        "HTTP 503",
+        "Temporary-service warning, distinct styling, retry capability and recovery via future polling/refetch."
+      ],
+      [
+        "Timeout",
+        "Configurable 30 s protection, request cancellation, timeout-specific message and manual retry."
+      ],
+      [
+        "Network failure",
+        "Network-specific classification and user guidance rather than a generic fetch error."
+      ],
+      [
+        "404",
+        "Not-found state with appropriate navigation; avoids pointless retry."
+      ],
+      [
+        "Empty results",
+        "Contextual empty state and clear-filter action rather than a blank table."
+      ],
+      [
+        "Slow response",
+        "Skeleton KPI cards/rows keep the interface visibly alive while waiting."
+      ],
+      [
+        "Partial endpoint failure",
+        "Widget/page-specific error so one failed API does not necessarily take down navigation or unrelated views."
+      ]
+    ],
+    [
+      [
+        "Break condition",
+        "Mechanism available in supplied work",
+        "What it validates"
+      ],
+      [
+        "Sudden traffic spike",
+        "K6 spike scenario",
+        "Whether latency/errors surge and whether the service returns toward baseline."
+      ],
+      [
+        "Multiple simultaneous writes",
+        "K6 write-contention scenario",
+        "PATCH latency, DB locks/connection behavior and serialization pressure."
+      ],
+      [
+        "Slow API / network delay",
+        "Development failure injection or DevTools throttling",
+        "Skeleton/loading states, cancellation and perceived responsiveness."
+      ],
+      [
+        "HTTP 500 / 503",
+        "Development failure injection",
+        "Error classification, partial failures and retry UX."
+      ],
+      [
+        "Timeout / hanging request",
+        "Failure injection",
+        "Timeout state and manual retry."
+      ],
+      [
+        "Random high error rate",
+        "Failure injection",
+        "Whether repeated partial failures remain understandable to the user."
+      ],
+      [
+        "Large dataset",
+        "Seed generator + documented 520k setup",
+        "Whether pagination/query behavior scales with data volume."
+      ]
+    ],
+    [
+      [
+        "VUs",
+        "Documented status",
+        "P95 / errors",
+        "User-experience interpretation"
+      ],
+      [
+        "10",
+        "Stable",
+        "<500 ms / <0.1%",
+        "Fast and fully responsive."
+      ],
+      [
+        "50",
+        "Stable",
+        "<1.5 s / <0.5%",
+        "Comfortable experience; caching/debounce prevents avoidable request storms."
+      ],
+      [
+        "100",
+        "Degraded",
+        "~3 s / 1–2%",
+        "Visible delay; dashboard can become slow, but list/pagination remains usable."
+      ],
+      [
+        "150",
+        "Not supplied as an actual result",
+        "Stress plan predicts boundary near ~150–180",
+        "Should be tested directly; treat as near-limit rather than “safe.”"
+      ],
+      [
+        "250",
+        "Unstable in summary",
+        ">5 s / >5%",
+        "Timeouts/cascading failures begin; database connection capacity is implicated."
+      ],
+      [
+        "500",
+        "No executed result supplied",
+        "N/A",
+        "Current architecture should not be promised at this level without changes."
+      ],
+      [
+        "1,000",
+        "No executed result supplied",
+        "N/A",
+        "Requires production-scale architecture and dedicated validation."
+      ]
+    ],
+    [
+      [
+        "YES — WITH ARCHITECTURAL CHANGES\nThe sprint demonstrates the right engineering method and a scalable frontend/data-access pattern. It does not yet justify a clean claim that the current single-instance architecture supports 500–1,000 concurrent users. The next step is not to rewrite the frontend; it is to validate and remove the database/query/connection bottleneck, scale the API horizontally, add caching/observability, and then repeat the break tests with raw evidence."
+      ]
+    ],
+    [
+      [
+        "Question from the sprint",
+        "Answer"
+      ],
+      [
+        "What did we test?",
+        "High-volume UI/data access, request/payload behavior, K6 scenarios from smoke through configured 1,000 VUs, failure injection, spike and write-contention patterns. Actual raw 150/500/1,000 benchmark results are not supplied."
+      ],
+      [
+        "What worked?",
+        "Server-side pagination/search/filter/sort; responsive error/loading states; client caching/deduplication; request and payload reductions; stable documented behavior at 50 VUs."
+      ],
+      [
+        "What broke?",
+        "Documented degradation by 100 VUs and instability around 250 VUs; connection-pool/database pressure is the primary suspected cause."
+      ],
+      [
+        "Biggest bottleneck?",
+        "Unoptimized PostgreSQL scans/aggregates plus database connection capacity under concurrency."
+      ],
+      [
+        "What did we fix?",
+        "Frontend request amplification, repeated static fetches, over-sized list payloads, unstable query identity, unnecessary re-renders and stale-cache behavior."
+      ],
+      [
+        "How much did it improve?",
+        "Most defensible improvements: search requests -80%; repeated airport network fetches -80% in the documented navigation scenario; 20-row list payload about -50%; total page-load payload documented about -30%. Page-load speed figures are estimates unless re-measured with saved traces."
+      ],
+      [
+        "Current comfortable capacity?",
+        "50 concurrent VUs is the documented comfortable point. 100 is degraded. 150 must be measured directly before being called stable."
+      ],
+      [
+        "Next scaling step?",
+        "Database indexing/query optimization + aggregate caching/precomputation + connection management + horizontal API scaling + production observability, followed by repeatable K6 break tests."
+      ]
+    ],
+    [
+      [
+        "# Reproducible K6 progression from the supplied framework\nk6 run load-tests/smoke.js\nLOAD_LEVEL=moderate k6 run load-tests/load.js      # 50 VUs\nLOAD_LEVEL=heavy k6 run load-tests/load.js         # 100 VUs\nLOAD_LEVEL=intense k6 run load-tests/load.js       # 150 VUs\nk6 run load-tests/stress.js                        # progressive stress\nK6_VUS=500 k6 run load-tests/load.js               # only after lower levels pass\nK6_VUS=1000 k6 run load-tests/load.js              # breaking test; controlled environment only"
+      ]
+    ]
+  ],
+  "sections": [
+    {
+      "page_width": 7772400,
+      "page_height": 10058400,
+      "top_margin": 567055,
+      "bottom_margin": 567055,
+      "left_margin": 658495,
+      "right_margin": 658495
+    }
+  ],
+  "inline_shapes": 2
+}
