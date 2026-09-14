@@ -1,0 +1,62 @@
+time="2026-09-14T10:12:28+05:00" level=info msg="\n" source=console
+time="2026-09-14T10:12:28+05:00" level=info msg="\n╔════════════════════════════════════════════════════════╗\n║  K6 LOAD TEST: SMOKE TEST                       ║\n║  VUs: 1      Duration: 30s                       ║\n║  API: http://localhost:4000                   ║\n╚════════════════════════════════════════════════════════╝\n  " source=console
+time="2026-09-14T10:12:28+05:00" level=info msg="✓ Smoke test setup complete\n" source=console
+time="2026-09-14T10:13:08+05:00" level=info msg="\n" source=console
+time="2026-09-14T10:13:08+05:00" level=info msg="\n╔════════════════════════════════════════════════════════╗\n║  TEST COMPLETE: SMOKE TEST                         ║\n╚════════════════════════════════════════════════════════╝\n  " source=console
+time="2026-09-14T10:13:08+05:00" level=info msg="Smoke test finished. Use checks, thresholds and exit code to determine success.\n" source=console
+
+
+  █ THRESHOLDS 
+
+    checks
+    ✓ 'rate==1' rate=100.00%
+
+    http_req_duration
+    ✓ 'p(95)<2000' p(95)=859.25ms
+    ✓ 'p(99)<5000' p(99)=914.87ms
+
+    http_req_failed
+    ✓ 'rate==0' rate=0.00%
+
+    http_reqs
+    ✓ 'rate>0' rate=0.868077/s
+
+
+  █ TOTAL RESULTS 
+
+    checks_total.......: 52      1.289714/s
+    checks_succeeded...: 100.00% 52 out of 52
+    checks_failed......: 0.00%   0 out of 52
+
+    ✓ health check endpoint returns true
+    ✓ airports endpoint returns 200
+    ✓ at least some airports returned
+    ✓ browse flights returns 200
+    ✓ flights list is not empty
+    ✓ pagination total is reasonable
+    ✓ search flights returns 200
+    ✓ search returns results
+    ✓ flight details endpoint responds
+    ✓ flight data has required fields
+    ✓ dashboard endpoint returns 200
+    ✓ dashboard has total flights
+    ✓ dashboard has active incidents
+
+    HTTP
+    http_req_duration..............: avg=407.48ms min=1.43ms med=374.73ms max=916.64ms p(95)=859.25ms p(99)=914.87ms count=35
+      { expected_response:true }...: avg=407.48ms min=1.43ms med=374.73ms max=916.64ms p(95)=859.25ms p(99)=914.87ms count=35
+    http_req_failed................: 0.00%  0 out of 35
+    http_reqs......................: 35     0.868077/s
+
+    EXECUTION
+    iteration_duration.............: avg=10.04s   min=7.21s  med=10.73s   max=11.5s    p(95)=11.39s   p(99)=11.48s   count=4 
+    iterations.....................: 4      0.099209/s
+    vus............................: 1      min=1       max=1
+    vus_max........................: 1      min=1       max=1
+
+    NETWORK
+    data_received..................: 140 kB 3.5 kB/s
+    data_sent......................: 4.4 kB 109 B/s
+
+
+

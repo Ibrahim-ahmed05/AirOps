@@ -1,0 +1,298 @@
+{
+    "metrics": {
+        "group_duration": {
+            "min": 56.4235,
+            "med": 980.5735500000001,
+            "max": 5625.7088,
+            "p(95)": 5088.245474999999,
+            "p(99)": 5563.89635,
+            "count": 28,
+            "avg": 1434.8509892857144
+        },
+        "checks": {
+            "passes": 52,
+            "fails": 0,
+            "thresholds": {
+                "rate==1": false
+            },
+            "value": 1
+        },
+        "http_req_duration": {
+            "min": 1.4379,
+            "med": 374.7325,
+            "max": 916.6465,
+            "p(95)": 859.2540899999998,
+            "p(99)": 914.8758139999999,
+            "count": 35,
+            "avg": 407.4830028571428,
+            "thresholds": {
+                "p(95)<2000": false,
+                "p(99)<5000": false
+            }
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 35,
+            "thresholds": {
+                "rate==0": false
+            },
+            "value": 0
+        },
+        "http_req_blocked": {
+            "avg": 1.2300799999999998,
+            "min": 0,
+            "med": 0,
+            "max": 42.4099,
+            "p(95)": 0.19286999999999818,
+            "p(99)": 28.20911999999986,
+            "count": 35
+        },
+        "vus_max": {
+            "value": 1,
+            "min": 1,
+            "max": 1
+        },
+        "http_req_receiving": {
+            "avg": 0.2898657142857143,
+            "min": 0,
+            "med": 0,
+            "max": 1.0239,
+            "p(95)": 1.01431,
+            "p(99)": 1.021044,
+            "count": 35
+        },
+        "iterations": {
+            "count": 4,
+            "rate": 0.09920880703564851
+        },
+        "data_sent": {
+            "count": 4377,
+            "rate": 108.55923709875837
+        },
+        "vus": {
+            "min": 1,
+            "max": 1,
+            "value": 1
+        },
+        "http_reqs": {
+            "count": 35,
+            "rate": 0.8680770615619244,
+            "thresholds": {
+                "rate>0": false
+            }
+        },
+        "http_req_waiting": {
+            "med": 374.7325,
+            "max": 916.6465,
+            "p(95)": 858.9397199999997,
+            "p(99)": 914.8758139999999,
+            "count": 35,
+            "avg": 407.13056,
+            "min": 0.7758
+        },
+        "http_req_sending": {
+            "avg": 0.06257714285714286,
+            "min": 0,
+            "med": 0,
+            "max": 0.9976,
+            "p(95)": 0.5612999999999995,
+            "p(99)": 0.8909079999999989,
+            "count": 35
+        },
+        "iteration_duration": {
+            "max": 11503.9727,
+            "p(95)": 11391.32177,
+            "p(99)": 11481.442514,
+            "count": 4,
+            "avg": 10044.6746,
+            "min": 7213.8807,
+            "med": 10730.4225
+        },
+        "http_req_tls_handshaking": {
+            "count": 35,
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(95)": 0,
+            "p(99)": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 407.4830028571428,
+            "min": 1.4379,
+            "med": 374.7325,
+            "max": 916.6465,
+            "p(95)": 859.2540899999998,
+            "p(99)": 914.8758139999999,
+            "count": 35
+        },
+        "http_req_connecting": {
+            "avg": 0.09140857142857144,
+            "min": 0,
+            "med": 0,
+            "max": 2.5564,
+            "p(95)": 0.19286999999999818,
+            "p(99)": 1.9058099999999936,
+            "count": 35
+        },
+        "data_received": {
+            "count": 140106,
+            "rate": 3474.937279634142
+        }
+    },
+    "setup_data": {},
+    "root_group": {
+            "name": "",
+            "path": "",
+            "id": "d41d8cd98f00b204e9800998ecf8427e",
+            "groups": {
+                "01_Health & Connectivity": {
+                    "groups": {},
+                    "checks": {
+                            "health check endpoint returns true": {
+                                "passes": 4,
+                                "fails": 0,
+                                "name": "health check endpoint returns true",
+                                "path": "::01_Health & Connectivity::health check endpoint returns true",
+                                "id": "6b701349eee6fbb25c333e39ded85cef"
+                            }
+                        },
+                    "name": "01_Health & Connectivity",
+                    "path": "::01_Health & Connectivity",
+                    "id": "261ce9bb1bf7cea2795e2e98b6d1c39c"
+                },
+                "02_Read Airports": {
+                    "checks": {
+                        "airports endpoint returns 200": {
+                            "id": "41ff39ca7c0ec4424d26495917921625",
+                            "passes": 4,
+                            "fails": 0,
+                            "name": "airports endpoint returns 200",
+                            "path": "::02_Read Airports::airports endpoint returns 200"
+                        },
+                        "at least some airports returned": {
+                            "passes": 4,
+                            "fails": 0,
+                            "name": "at least some airports returned",
+                            "path": "::02_Read Airports::at least some airports returned",
+                            "id": "97d23b76ba36d3d04542f32836a1073e"
+                        }
+                    },
+                    "name": "02_Read Airports",
+                    "path": "::02_Read Airports",
+                    "id": "3870add1c87b441fb2fc7aac2eb1c631",
+                    "groups": {}
+                },
+                "03_Browse Flights": {
+                    "checks": {
+                        "browse flights returns 200": {
+                            "name": "browse flights returns 200",
+                            "path": "::03_Browse Flights::browse flights returns 200",
+                            "id": "da4aa41fc1a2f9c80ccb0f9343849df2",
+                            "passes": 4,
+                            "fails": 0
+                        },
+                        "flights list is not empty": {
+                            "name": "flights list is not empty",
+                            "path": "::03_Browse Flights::flights list is not empty",
+                            "id": "8120e2abdaa3cbac87ea99c139cb4fc9",
+                            "passes": 4,
+                            "fails": 0
+                        },
+                        "pagination total is reasonable": {
+                            "id": "4605bfd2398ff6284ccea19e47dee677",
+                            "passes": 4,
+                            "fails": 0,
+                            "name": "pagination total is reasonable",
+                            "path": "::03_Browse Flights::pagination total is reasonable"
+                        }
+                    },
+                    "name": "03_Browse Flights",
+                    "path": "::03_Browse Flights",
+                    "id": "0d54a6de6cb2ddca5dc90caf77661f03",
+                    "groups": {}
+                },
+                "04_Search Flights": {
+                    "groups": {},
+                    "checks": {
+                            "search flights returns 200": {
+                                "name": "search flights returns 200",
+                                "path": "::04_Search Flights::search flights returns 200",
+                                "id": "9f14acae61217979231af6de3b48cc65",
+                                "passes": 4,
+                                "fails": 0
+                            },
+                            "search returns results": {
+                                "name": "search returns results",
+                                "path": "::04_Search Flights::search returns results",
+                                "id": "d3f1131fc87bc613d7caed71bfacbcf7",
+                                "passes": 4,
+                                "fails": 0
+                            }
+                        },
+                    "name": "04_Search Flights",
+                    "path": "::04_Search Flights",
+                    "id": "46ccd154a6dd1af0d843dde244f55a0e"
+                },
+                "05_Get Flight Details": {
+                    "name": "05_Get Flight Details",
+                    "path": "::05_Get Flight Details",
+                    "id": "9b2eb09f39ccc3f7771a00f2302c70ad",
+                    "groups": {},
+                    "checks": {
+                            "flight details endpoint responds": {
+                                "passes": 4,
+                                "fails": 0,
+                                "name": "flight details endpoint responds",
+                                "path": "::05_Get Flight Details::flight details endpoint responds",
+                                "id": "91c533c094aca77e03d42138d6661bb2"
+                            },
+                            "flight data has required fields": {
+                                "name": "flight data has required fields",
+                                "path": "::05_Get Flight Details::flight data has required fields",
+                                "id": "bae6132e725e10abf5f0dcfaf4b9ca42",
+                                "passes": 4,
+                                "fails": 0
+                            }
+                        }
+                },
+                "06_Dashboard Metrics": {
+                    "id": "049fd69040277d54096fa445ddd3514d",
+                    "groups": {},
+                    "checks": {
+                            "dashboard endpoint returns 200": {
+                                "name": "dashboard endpoint returns 200",
+                                "path": "::06_Dashboard Metrics::dashboard endpoint returns 200",
+                                "id": "61a3976b2233d0fc07d82b8d942e0f5b",
+                                "passes": 4,
+                                "fails": 0
+                            },
+                            "dashboard has total flights": {
+                                "fails": 0,
+                                "name": "dashboard has total flights",
+                                "path": "::06_Dashboard Metrics::dashboard has total flights",
+                                "id": "5a45e9d72ec72f10ee62702e17bae890",
+                                "passes": 4
+                            },
+                            "dashboard has active incidents": {
+                                "passes": 4,
+                                "fails": 0,
+                                "name": "dashboard has active incidents",
+                                "path": "::06_Dashboard Metrics::dashboard has active incidents",
+                                "id": "def26f4277468bb46fb9bfd1533796dc"
+                            }
+                        },
+                    "name": "06_Dashboard Metrics",
+                    "path": "::06_Dashboard Metrics"
+                },
+                "07_Mixed Workload Sample": {
+                    "path": "::07_Mixed Workload Sample",
+                    "id": "99c670fbe9c4d4521736ae5c35314a75",
+                    "groups": {},
+                    "checks": {},
+                    "name": "07_Mixed Workload Sample"
+                }
+            },
+            "checks": {}
+        }
+}

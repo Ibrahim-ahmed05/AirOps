@@ -32,7 +32,8 @@ export const options = {
   thresholds: {
     // HTTP request duration thresholds
     http_req_duration: ['p(95)<2000', 'p(99)<5000'],
-    http_req_failed: ['rate<0.1'], // Allow up to 10% failure rate during smoke test
+    http_req_failed: ['rate==0'],
+    checks: ['rate==1'],
 
     // Custom metric thresholds
     'http_reqs': ['rate>0'], // At least some requests should succeed
@@ -104,8 +105,8 @@ export default function (data) {
   group('05_Get Flight Details', () => {
     const result = getFlightDetails();
     check(result, {
-      'flight details endpoint responds': (r) => r.status === 200 || r.status === 404,
-      'flight data has required fields': (r) => r.flightNumber !== null || r.status === 404,
+      'flight details endpoint responds': (r) => r.status === 200,
+      'flight data has required fields': (r) => r.flightNumber !== null,
     });
     sleepThinkTime('browsing');
   });
@@ -132,5 +133,5 @@ export default function (data) {
 export function teardown(data) {
   console.log('\n');
   logTestComplete('SMOKE TEST');
-  console.log('Smoke test completed successfully. API is responsive.\n');
+  console.log('Smoke test finished. Use checks, thresholds and exit code to determine success.\n');
 }

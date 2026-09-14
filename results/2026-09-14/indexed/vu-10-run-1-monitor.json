@@ -1,0 +1,92 @@
+[
+  {
+    "at": "2026-09-14T05:31:14.261Z",
+    "connections": 20,
+    "active": 1,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:16.316Z",
+    "connections": 19,
+    "active": 8,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:18.319Z",
+    "connections": 14,
+    "active": 7,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:20.330Z",
+    "connections": 12,
+    "active": 5,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:22.359Z",
+    "connections": 14,
+    "active": 8,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:24.364Z",
+    "connections": 10,
+    "active": 1,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:26.372Z",
+    "connections": 10,
+    "active": 2,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:28.378Z",
+    "connections": 12,
+    "active": 3,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:30.380Z",
+    "connections": 13,
+    "active": 5,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:32.393Z",
+    "connections": 11,
+    "active": 4,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:34.396Z",
+    "connections": 12,
+    "active": 5,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:36.405Z",
+    "connections": 10,
+    "active": 1,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:38.411Z",
+    "connections": 12,
+    "active": 7,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:40.417Z",
+    "connections": 10,
+    "active": 4,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:31:42.431Z",
+    "connections": 9,
+    "active": 0,
+    "lock_waits": 0
+  }
+]

@@ -1,0 +1,218 @@
+[
+  {
+    "at": "2026-09-14T05:19:51.050Z",
+    "connections": 21,
+    "active": 21,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:19:53.261Z",
+    "connections": 26,
+    "active": 26,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:19:55.590Z",
+    "connections": 24,
+    "active": 24,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:19:57.640Z",
+    "connections": 27,
+    "active": 27,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:19:59.716Z",
+    "connections": 23,
+    "active": 23,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:01.720Z",
+    "connections": 20,
+    "active": 20,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:03.758Z",
+    "connections": 20,
+    "active": 20,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:05.772Z",
+    "connections": 20,
+    "active": 20,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:07.866Z",
+    "connections": 24,
+    "active": 24,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:09.878Z",
+    "connections": 27,
+    "active": 27,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:12.018Z",
+    "connections": 25,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:14.028Z",
+    "connections": 26,
+    "active": 26,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:16.055Z",
+    "connections": 23,
+    "active": 23,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:18.065Z",
+    "connections": 25,
+    "active": 23,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:20.193Z",
+    "connections": 26,
+    "active": 26,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:22.200Z",
+    "connections": 26,
+    "active": 26,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:24.242Z",
+    "connections": 23,
+    "active": 23,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:26.256Z",
+    "connections": 22,
+    "active": 22,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:28.320Z",
+    "connections": 26,
+    "active": 26,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:30.330Z",
+    "connections": 26,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:32.368Z",
+    "connections": 25,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:34.378Z",
+    "connections": 24,
+    "active": 24,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:36.446Z",
+    "connections": 25,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:38.448Z",
+    "connections": 21,
+    "active": 21,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:40.525Z",
+    "connections": 27,
+    "active": 27,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:42.531Z",
+    "connections": 27,
+    "active": 27,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:44.578Z",
+    "connections": 27,
+    "active": 27,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:46.579Z",
+    "connections": 25,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:48.842Z",
+    "connections": 24,
+    "active": 24,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:51.020Z",
+    "connections": 23,
+    "active": 23,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:53.173Z",
+    "connections": 21,
+    "active": 21,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:55.179Z",
+    "connections": 25,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:57.444Z",
+    "connections": 24,
+    "active": 24,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:20:59.724Z",
+    "connections": 25,
+    "active": 25,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:21:01.737Z",
+    "connections": 23,
+    "active": 17,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:21:03.748Z",
+    "connections": 20,
+    "active": 3,
+    "lock_waits": 0
+  }
+]

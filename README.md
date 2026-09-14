@@ -1,5 +1,14 @@
 # AirOps — Scalability & Production Readiness Lab
 
+## Current evidence and deployment
+
+- [Measured results and reproducible commands](docs/performance-measurements.md)
+- [Task completion audit and correction of earlier claims](docs/sprint-completion-audit.md)
+- [Vercel deployment guide](docs/deployment-vercel.md)
+- [Raw dated test evidence](results/)
+
+The September 3 estimates and conflicting completion reports have been superseded. Originals are retained in `docs/archive/2026-09-03` for traceability. The existing Word report is also historical. Use the current Markdown report for scoring. A live production URL has not yet been published; configuration alone is not a deployment.
+
 AirOps is a deliberately small but production-realistic airline operations dashboard designed specifically for scalability, load-testing, frontend performance, database performance, failure-handling, and production-readiness experiments.
 
 The purpose of this project is **NOT** to build a feature-rich airline product.

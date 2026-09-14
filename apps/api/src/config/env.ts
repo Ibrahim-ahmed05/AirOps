@@ -15,9 +15,13 @@ const envSchema = z.object({
   HOST: z.string().default('0.0.0.0'),
   DATABASE_URL: z.string().default('postgres://airops:airops_password@localhost:5432/airops'),
   CORS_ORIGIN: z.string().default('http://localhost:3000'),
+  DB_POOL_MAX: z.coerce.number().int().min(1).max(100).default(process.env.VERCEL ? 5 : 20),
 });
 
 const parseEnv = () => {
+  if (process.env.NODE_ENV === 'production' && (!process.env.DATABASE_URL || !process.env.CORS_ORIGIN)) {
+    throw new Error('Production requires DATABASE_URL and CORS_ORIGIN environment variables');
+  }
   const result = envSchema.safeParse(process.env);
   if (!result.success) {
     console.error('Invalid environment variables:', result.error.flatten().fieldErrors);

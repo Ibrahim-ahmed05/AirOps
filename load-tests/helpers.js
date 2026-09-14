@@ -145,7 +145,7 @@ export function apiPost(url, payload, params) {
  */
 export function healthCheck() {
   const response = apiGet('/health');
-  return response.status === 200;
+  return response.status === 200 && response.body && response.body.database && response.body.database.status === 'connected';
 }
 
 /**
@@ -164,7 +164,7 @@ export function browseFlights(filters) {
     }
   }
 
-  const queryString = new URLSearchParams(params).toString();
+  const queryString = Object.keys(params).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
   const response = apiGet(`/api/flights?${queryString}`);
 
   let total = 0;
@@ -204,7 +204,7 @@ export function searchFlights(searchTerm, filters) {
     params[key] = filters[key];
   }
 
-  const queryString = new URLSearchParams(params).toString();
+  const queryString = Object.keys(params).map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`).join('&');
   const response = apiGet(`/api/flights?${queryString}`);
 
   let resultCount = 0;
@@ -245,7 +245,7 @@ export function getFlightDetails(flightId) {
     flightNumber: flightNumber,
     hasEvents: hasEvents,
     hasIncidents: hasIncidents,
-    isSuccess: response.status === 200 || response.status === 404,
+    isSuccess: response.status === 200,
   };
 }
 
@@ -297,7 +297,7 @@ export function updateFlightStatus(flightId, newStatus) {
     status: response.status,
     flightId: id,
     newStatus: status,
-    isSuccess: response.status === 200 || response.status === 404,
+    isSuccess: response.status === 200,
     isError: response.status >= 400,
   };
 }
@@ -395,7 +395,9 @@ export function executeRealisticMixedWorkload() {
   } else if (rand < 0.9) {
     sessionDashboard();
   } else {
-    sessionStatusUpdate();
+    // Writes must be explicitly enabled against a disposable database.
+    if (__ENV.ALLOW_WRITES === 'true') sessionStatusUpdate();
+    else getFlightDetails();
   }
 }
 

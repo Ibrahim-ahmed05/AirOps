@@ -1,0 +1,15 @@
+{
+  "at": "2026-09-14T05:32:31.752Z",
+  "fixtureId": 520001,
+  "exitCode": 0,
+  "events": {
+    "count": 200,
+    "unique_messages": 200
+  },
+  "flight": {
+    "status": "DELAYED",
+    "delay_minutes": 7
+  },
+  "passed": true,
+  "scope": "50 VUs / 200 writes to one disposable row. Verifies acknowledged event persistence and no partial status/event transaction; does not prove optimistic conflict detection. Current API uses last-writer-wins."
+}

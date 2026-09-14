@@ -1,0 +1,188 @@
+[
+  {
+    "at": "2026-09-14T05:16:13.990Z",
+    "connections": 14,
+    "active": 14,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:16.005Z",
+    "connections": 11,
+    "active": 7,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:18.126Z",
+    "connections": 15,
+    "active": 14,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:20.212Z",
+    "connections": 12,
+    "active": 9,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:22.298Z",
+    "connections": 13,
+    "active": 10,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:24.306Z",
+    "connections": 13,
+    "active": 9,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:26.444Z",
+    "connections": 15,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:28.453Z",
+    "connections": 10,
+    "active": 5,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:30.541Z",
+    "connections": 15,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:32.541Z",
+    "connections": 11,
+    "active": 8,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:34.627Z",
+    "connections": 16,
+    "active": 14,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:36.635Z",
+    "connections": 15,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:38.680Z",
+    "connections": 13,
+    "active": 11,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:40.749Z",
+    "connections": 15,
+    "active": 11,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:42.795Z",
+    "connections": 14,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:44.797Z",
+    "connections": 13,
+    "active": 11,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:46.832Z",
+    "connections": 12,
+    "active": 11,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:48.838Z",
+    "connections": 15,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:50.857Z",
+    "connections": 12,
+    "active": 9,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:52.860Z",
+    "connections": 16,
+    "active": 15,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:54.913Z",
+    "connections": 15,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:56.975Z",
+    "connections": 17,
+    "active": 17,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:16:59.124Z",
+    "connections": 14,
+    "active": 11,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:01.126Z",
+    "connections": 17,
+    "active": 16,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:03.229Z",
+    "connections": 17,
+    "active": 13,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:05.240Z",
+    "connections": 12,
+    "active": 10,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:07.273Z",
+    "connections": 14,
+    "active": 11,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:09.273Z",
+    "connections": 15,
+    "active": 12,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:11.382Z",
+    "connections": 13,
+    "active": 10,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:13.396Z",
+    "connections": 14,
+    "active": 10,
+    "lock_waits": 0
+  },
+  {
+    "at": "2026-09-14T05:17:15.404Z",
+    "connections": 10,
+    "active": 0,
+    "lock_waits": 0
+  }
+]

@@ -1,0 +1,5 @@
+{"level":30,"time":1789364123671,"pid":20124,"hostname":"DESKTOP-BUGKGO7","msg":"Server listening at http://0.0.0.0:4000"}
+{"level":30,"time":1789364123673,"pid":20124,"hostname":"DESKTOP-BUGKGO7","msg":"AirOps API running at http://0.0.0.0:4000"}
+{"level":30,"time":1789364123945,"pid":20124,"hostname":"DESKTOP-BUGKGO7","reqId":"req-1","req":{"method":"GET","url":"/health","hostname":"localhost:4000","remoteAddress":"127.0.0.1","remotePort":56023},"msg":"incoming request"}
+{"level":30,"time":1789364124001,"pid":20124,"hostname":"DESKTOP-BUGKGO7","method":"GET","url":"/health","statusCode":200,"durationMs":54.68,"msg":"GET /health completed in 54.68ms [HTTP 200]"}
+{"level":30,"time":1789364124001,"pid":20124,"hostname":"DESKTOP-BUGKGO7","reqId":"req-1","res":{"statusCode":200},"responseTime":55.59969997406006,"msg":"request completed"}

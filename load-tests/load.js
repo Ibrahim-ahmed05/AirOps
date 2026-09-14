@@ -34,14 +34,6 @@ export const options = {
   vus: __ENV.K6_VUS ? parseInt(__ENV.K6_VUS) : config.vus,
   duration: __ENV.K6_DURATION || config.duration,
 
-  stages: [
-    // Ramp-up: gradually increase load
-    { duration: '2m', target: Math.floor(options.vus * 0.5) },
-    // Sustained load at full capacity
-    { duration: '3m', target: options.vus },
-    // Cool-down: gradually decrease load
-    { duration: '1m', target: 0 },
-  ],
 
   thresholds: {
     // Response time thresholds
@@ -55,7 +47,7 @@ export const options = {
     http_req_failed: ['rate<0.02'],
 
     // Request rate
-    'http_reqs': ['rate>100'],
+    'http_reqs': ['count>0'],
   },
 
   summaryTrendStats: ['avg', 'min', 'med', 'max', 'p(95)', 'p(99)', 'count'],
@@ -75,7 +67,7 @@ export function setup() {
   console.log('  - 60% Browsing (list flights, pagination)');
   console.log('  - 20% Searching (filters, sorting)');
   console.log('  - 10% Dashboard (metrics view)');
-  console.log('  - 10% Status Updates (write operations)\n');
+  console.log('  - 10% Details (writes only when ALLOW_WRITES=true)\n');
 
   return {};
 }

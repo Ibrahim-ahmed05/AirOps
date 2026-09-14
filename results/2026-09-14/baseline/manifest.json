@@ -1,0 +1,230 @@
+{
+  "startedAt": "2026-09-14T05:16:10.026Z",
+  "phase": "baseline",
+  "levels": [
+    10,
+    50,
+    100,
+    150,
+    500
+  ],
+  "repetitions": 2,
+  "duration": "60s",
+  "node": "v24.15.0",
+  "k6": "k6.exe v2.2.0 (commit/00a9a1b7f5, go1.26.5, windows/amd64)",
+  "gitCommit": "c0fa93c2c34b1cf4d12077d4bd946727deb670a9",
+  "sourceHashes": {
+    "apps/api/dist/server.js": "0f7fb8e1f55fc52f45a275655193ab51fc6bccfe2da6499cd8a4185be3ced66d",
+    "load-tests/capacity.js": "99885ba1db2a501d680524101b3e73c7f3a53785ddea06955532022687779c55",
+    "load-tests/run-evidence.mjs": "58955e0743b23bd520b2a46999a878128eeaf008d98816e6d804fff067e2d9d0"
+  },
+  "host": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpus": 8,
+    "cpuModel": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+    "memoryGiB": 15.85
+  },
+  "database": {
+    "version": "PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit"
+  },
+  "countsBefore": {
+    "flights": 520000,
+    "events": 1603491,
+    "incidents": 15500,
+    "airports": 40,
+    "aircraft": 250
+  },
+  "limits": "Single local machine; k6 and API share resources. HTTP VUs do not represent open browsers. Two 60-second runs are not a soak or production certificate.",
+  "runs": [
+    {
+      "name": "vu-10-run-1",
+      "vus": 10,
+      "repeat": 1,
+      "exitCode": 99,
+      "elapsedMs": 64552,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 702,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 702.8292999999976,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-10-run-2",
+      "vus": 10,
+      "repeat": 2,
+      "exitCode": 99,
+      "elapsedMs": 67438,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 1159,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 1159.4599000000162,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-50-run-1",
+      "vus": 50,
+      "repeat": 1,
+      "exitCode": 99,
+      "elapsedMs": 73946,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 1158,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 1157.9108000000124,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-50-run-2",
+      "vus": 50,
+      "repeat": 2,
+      "exitCode": 99,
+      "elapsedMs": 75959,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 843,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 843.8950000000186,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-100-run-1",
+      "vus": 100,
+      "repeat": 1,
+      "exitCode": 99,
+      "elapsedMs": 75149,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 717,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 717.3404999999912,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-100-run-2",
+      "vus": 100,
+      "repeat": 2,
+      "exitCode": 99,
+      "elapsedMs": 75240,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 967,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 966.8858000000473,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-150-run-1",
+      "vus": 150,
+      "repeat": 1,
+      "exitCode": 99,
+      "elapsedMs": 75791,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 1610,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 1609.799100000062,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-150-run-2",
+      "vus": 150,
+      "repeat": 2,
+      "exitCode": 99,
+      "elapsedMs": 72363,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 830,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 829.3036999999313,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-500-run-1",
+      "vus": 500,
+      "repeat": 1,
+      "exitCode": 99,
+      "elapsedMs": 79881,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 678,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 677.7203000000445,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-500-run-2",
+      "vus": 500,
+      "repeat": 2,
+      "exitCode": 99,
+      "elapsedMs": 76635,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 678,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 677.4967000000179,
+            "ok": true
+          }
+        ]
+      }
+    }
+  ],
+  "countsAfter": {
+    "flights": 520000,
+    "events": 1603491,
+    "incidents": 15500,
+    "airports": 40,
+    "aircraft": 250
+  },
+  "completedAt": "2026-09-14T05:29:04.638Z",
+  "readOnlyCountsUnchanged": true
+}

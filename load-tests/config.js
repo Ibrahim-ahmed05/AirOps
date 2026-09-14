@@ -98,7 +98,7 @@ export const HTTP_REQUEST_OPTIONS = {
     'User-Agent': 'k6-load-test/1.0',
   },
   timeout: '10s',
-  responseType: 'json',
+  responseType: 'text',
 };
 
 /**

@@ -1,0 +1,71 @@
+{
+  "at": "2026-09-14T05:29:20.105Z",
+  "results": [
+    {
+      "name": "DB connected",
+      "status": 200,
+      "ms": 70.3299,
+      "passed": true
+    },
+    {
+      "name": "20 rows and exact 520k total",
+      "status": 200,
+      "ms": 314.9317,
+      "passed": true
+    },
+    {
+      "name": "100-row cap",
+      "status": 200,
+      "ms": 299.20180000000005,
+      "passed": true
+    },
+    {
+      "name": "Oversized page rejected",
+      "status": 400,
+      "ms": 3.261799999999994,
+      "passed": true
+    },
+    {
+      "name": "Invalid page rejected",
+      "status": 400,
+      "ms": 1.7205000000000155,
+      "passed": true
+    },
+    {
+      "name": "Invalid sort rejected",
+      "status": 400,
+      "ms": 1.9842000000001008,
+      "passed": true
+    },
+    {
+      "name": "Empty search result",
+      "status": 200,
+      "ms": 546.2619,
+      "passed": true
+    },
+    {
+      "name": "Status filter",
+      "status": 200,
+      "ms": 179.40480000000002,
+      "passed": true
+    },
+    {
+      "name": "Ascending sort",
+      "status": 200,
+      "ms": 307.3841,
+      "passed": true
+    },
+    {
+      "name": "Nonexistent detail",
+      "status": 404,
+      "ms": 3.44419999999991,
+      "passed": true
+    },
+    {
+      "name": "Dashboard matches dataset",
+      "status": 200,
+      "ms": 151.27769999999987,
+      "passed": true
+    }
+  ]
+}

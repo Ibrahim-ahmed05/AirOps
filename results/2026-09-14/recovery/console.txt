@@ -1,0 +1,4 @@
+time="2026-09-14T10:35:25+05:00" level=error msg="communicating with browser: read tcp 127.0.0.1:52953->127.0.0.1:52952: wsarecv: An existing connection was forcibly closed by the remote host." category=cdp elapsed="0 ms" source=browser
+time="2026-09-14T10:35:25+05:00" level=error msg="process with PID 12192 unexpectedly ended: exit status 0x80000003" category=browser elapsed="29 ms" source=browser
+time="2026-09-14T10:35:25+05:00" level=error msg="Uncaught (in promise) creating new page in browser context: canceled" executor=shared-iterations module=browser scenario=ui
+time="2026-09-14T10:35:25+05:00" level=error msg="thresholds on metrics 'recovery_journeys_completed' have been crossed"

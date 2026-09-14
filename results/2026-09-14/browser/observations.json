@@ -1,0 +1,228 @@
+[
+  {
+    "route": "/dashboard",
+    "timeToVisibleDataMs": 816,
+    "navigation": {
+      "entryType": "navigation",
+      "startTime": 0,
+      "domainLookupStart": 1.0999999642372131,
+      "responseStart": 11.599999964237213,
+      "transferSize": 3981,
+      "serverTiming": [],
+      "domContentLoadedEventStart": 44,
+      "type": "navigate",
+      "initiatorType": "navigation",
+      "contentEncoding": "gzip",
+      "workerCacheLookupStart": 0,
+      "secureConnectionStart": 0,
+      "unloadEventStart": 0,
+      "domComplete": 123.29999995231628,
+      "redirectCount": 0,
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "connectStart": 1.0999999642372131,
+      "requestStart": 2.599999964237213,
+      "unloadEventEnd": 0,
+      "fetchStart": 1.0999999642372131,
+      "connectEnd": 1.0999999642372131,
+      "firstInterimResponseStart": 0,
+      "responseEnd": 12.799999952316284,
+      "encodedBodySize": 3681,
+      "domInteractive": 44,
+      "contentType": "text/html",
+      "workerStart": 0,
+      "finalResponseHeadersStart": 11.599999964237213,
+      "decodedBodySize": 13552,
+      "navigationId": 1679,
+      "renderBlockingStatus": "non-blocking",
+      "workerMatchedSourceType": "",
+      "domainLookupEnd": 1.0999999642372131,
+      "responseStatus": 200,
+      "criticalCHRestart": 0,
+      "name": "http://localhost:3000/dashboard",
+      "duration": 123.39999997615814,
+      "domContentLoadedEventEnd": 44.09999996423721,
+      "loadEventStart": 123.39999997615814,
+      "loadEventEnd": 123.39999997615814,
+      "activationStart": 0,
+      "notRestoredReasons": null,
+      "confidence": {},
+      "deliveryType": "",
+      "nextHopProtocol": "http/1.1",
+      "workerRouterEvaluationStart": 0,
+      "redirectEnd": 0
+    },
+    "paint": [
+      {
+        "duration": 0,
+        "navigationId": 1679,
+        "paintTime": 216.19999998807907,
+        "presentationTime": 488,
+        "name": "first-paint",
+        "entryType": "paint",
+        "startTime": 488
+      },
+      {
+        "navigationId": 1679,
+        "paintTime": 216.19999998807907,
+        "presentationTime": 488,
+        "name": "first-contentful-paint",
+        "entryType": "paint",
+        "startTime": 488,
+        "duration": 0
+      }
+    ],
+    "initialRequests": [
+      {
+        "url": "http://localhost:4000/health",
+        "at": 1789362850136
+      },
+      {
+        "url": "http://localhost:4000/api/dashboard",
+        "at": 1789362850138
+      }
+    ],
+    "initialResponses": [
+      {
+        "url": "http://localhost:4000/health",
+        "status": 200,
+        "bytes": 150
+      },
+      {
+        "url": "http://localhost:4000/api/dashboard",
+        "status": 200,
+        "bytes": 294
+      }
+    ]
+  },
+  {
+    "route": "/flights",
+    "timeToVisibleDataMs": 1024,
+    "navigation": {
+      "duration": 132.69999998807907,
+      "contentEncoding": "gzip",
+      "responseEnd": 6.299999952316284,
+      "unloadEventStart": 0,
+      "loadEventStart": 132.69999998807907,
+      "name": "http://localhost:3000/flights",
+      "workerFinalSourceType": "",
+      "redirectStart": 0,
+      "domainLookupStart": 0.699999988079071,
+      "responseStart": 5.799999952316284,
+      "domComplete": 132.69999998807907,
+      "type": "navigate",
+      "redirectCount": 0,
+      "navigationId": 4874,
+      "redirectEnd": 0,
+      "connectEnd": 0.699999988079071,
+      "unloadEventEnd": 0,
+      "domContentLoadedEventStart": 82,
+      "domContentLoadedEventEnd": 82.09999996423721,
+      "notRestoredReasons": null,
+      "initiatorType": "navigation",
+      "domainLookupEnd": 0.699999988079071,
+      "transferSize": 3442,
+      "serverTiming": [],
+      "loadEventEnd": 132.69999998807907,
+      "activationStart": 0,
+      "criticalCHRestart": 0,
+      "firstInterimResponseStart": 0,
+      "finalResponseHeadersStart": 5.799999952316284,
+      "nextHopProtocol": "http/1.1",
+      "workerMatchedSourceType": "",
+      "fetchStart": 0.699999988079071,
+      "connectStart": 0.699999988079071,
+      "contentType": "text/html",
+      "workerCacheLookupStart": 0,
+      "decodedBodySize": 10488,
+      "responseStatus": 200,
+      "workerRouterEvaluationStart": 0,
+      "secureConnectionStart": 0,
+      "encodedBodySize": 3142,
+      "confidence": {},
+      "deliveryType": "",
+      "renderBlockingStatus": "non-blocking",
+      "workerStart": 0,
+      "requestStart": 1.5999999642372131,
+      "domInteractive": 81.89999997615814,
+      "entryType": "navigation",
+      "startTime": 0
+    },
+    "paint": [
+      {
+        "paintTime": 75.69999998807907,
+        "presentationTime": 92,
+        "name": "first-paint",
+        "entryType": "paint",
+        "startTime": 92,
+        "duration": 0,
+        "navigationId": 4874
+      },
+      {
+        "presentationTime": 92,
+        "name": "first-contentful-paint",
+        "entryType": "paint",
+        "startTime": 92,
+        "duration": 0,
+        "navigationId": 4874,
+        "paintTime": 75.69999998807907
+      }
+    ],
+    "initialRequests": [
+      {
+        "url": "http://localhost:4000/health",
+        "at": 1789362851415
+      },
+      {
+        "url": "http://localhost:4000/api/airports",
+        "at": 1789362851479
+      },
+      {
+        "url": "http://localhost:4000/api/flights?page=1&limit=20&sortBy=scheduledDeparture&sortOrder=desc",
+        "at": 1789362851479
+      }
+    ],
+    "initialResponses": [
+      {
+        "url": "http://localhost:4000/health",
+        "status": 200,
+        "bytes": 150
+      },
+      {
+        "url": "http://localhost:4000/api/airports",
+        "status": 200,
+        "bytes": 4759
+      },
+      {
+        "url": "http://localhost:4000/api/flights?page=1&limit=20&sortBy=scheduledDeparture&sortOrder=desc",
+        "status": 200,
+        "bytes": 6800
+      }
+    ]
+  },
+  {
+    "experiment": "request-per-character control versus actual debounce",
+    "control": {
+      "requests": 5,
+      "statuses": [
+        200,
+        200,
+        200,
+        200,
+        200
+      ],
+      "elapsedMs": 2894.099999964237
+    },
+    "debouncedSearchRequests": [
+      {
+        "url": "http://localhost:4000/api/flights?page=1&limit=20&sortBy=scheduledDeparture&sortOrder=desc&search=AA104",
+        "at": 1789362856364
+      }
+    ]
+  },
+  {
+    "experiment": "airport session cache across navigation",
+    "airportsBefore": 1,
+    "airportsAfter": 1
+  }
+]

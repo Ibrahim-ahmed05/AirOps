@@ -1,0 +1,12 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {spawn} from 'node:child_process';
+const dir=process.env.RESULT_DIR || 'results/2026-09-14/baseline';
+fs.mkdirSync(dir,{recursive:true});
+const stream=fs.createWriteStream(path.join(dir,'api-server.ndjson'),{flags:'a'});
+const child=spawn(process.execPath,['apps/api/dist/server.js'],{env:{...process.env,NODE_ENV:'production',CORS_ORIGIN:process.env.CORS_ORIGIN || 'http://localhost:3000'},windowsHide:true,stdio:['ignore','pipe','pipe']});
+child.stdout.on('data',chunk=>stream.write(chunk));
+child.stderr.on('data',chunk=>stream.write(chunk));
+console.log('API PID',child.pid,'log',path.join(dir,'api-server.ndjson'));
+child.on('exit',code=>{stream.end();process.exitCode=code || 0;});
+process.on('SIGINT',()=>child.kill('SIGTERM'));

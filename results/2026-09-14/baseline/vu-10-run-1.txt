@@ -1,0 +1,2 @@
+time="2026-09-14T10:16:47+05:00" level=warning msg="Request Failed" error="Get \"http://127.0.0.1:4000/api/flights?limit=20&search=EK\": request timeout"
+time="2026-09-14T10:17:15+05:00" level=error msg="thresholds on metrics 'checks, http_req_duration' have been crossed"

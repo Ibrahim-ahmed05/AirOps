@@ -1,0 +1,83 @@
+{
+  "startedAt": "2026-09-14T05:31:11.770Z",
+  "phase": "indexed",
+  "levels": [
+    10,
+    50
+  ],
+  "repetitions": 1,
+  "duration": "30s",
+  "node": "v24.15.0",
+  "k6": "k6.exe v2.2.0 (commit/00a9a1b7f5, go1.26.5, windows/amd64)",
+  "gitCommit": "c0fa93c2c34b1cf4d12077d4bd946727deb670a9",
+  "sourceHashes": {
+    "apps/api/dist/server.js": "0f7fb8e1f55fc52f45a275655193ab51fc6bccfe2da6499cd8a4185be3ced66d",
+    "load-tests/capacity.js": "99885ba1db2a501d680524101b3e73c7f3a53785ddea06955532022687779c55",
+    "load-tests/run-evidence.mjs": "58955e0743b23bd520b2a46999a878128eeaf008d98816e6d804fff067e2d9d0"
+  },
+  "host": {
+    "platform": "win32",
+    "release": "10.0.26200",
+    "cpus": 8,
+    "cpuModel": "Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz",
+    "memoryGiB": 15.85
+  },
+  "database": {
+    "version": "PostgreSQL 16.15, compiled by Visual C++ build 1944, 64-bit"
+  },
+  "countsBefore": {
+    "flights": 520000,
+    "events": 1603491,
+    "incidents": 15500,
+    "airports": 40,
+    "aircraft": 250
+  },
+  "limits": "Single local machine; k6 and API share resources. HTTP VUs do not represent open browsers. Two 60-second runs are not a soak or production certificate.",
+  "runs": [
+    {
+      "name": "vu-10-run-1",
+      "vus": 10,
+      "repeat": 1,
+      "exitCode": 0,
+      "elapsedMs": 31156,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 78,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 77.75340000000142,
+            "ok": true
+          }
+        ]
+      }
+    },
+    {
+      "name": "vu-50-run-1",
+      "vus": 50,
+      "repeat": 1,
+      "exitCode": 99,
+      "elapsedMs": 34108,
+      "recovery": {
+        "recovered": true,
+        "elapsedMs": 70,
+        "attempts": [
+          {
+            "status": 200,
+            "ms": 70.2554999999993,
+            "ok": true
+          }
+        ]
+      }
+    }
+  ],
+  "countsAfter": {
+    "flights": 520000,
+    "events": 1603491,
+    "incidents": 15500,
+    "airports": 40,
+    "aircraft": 250
+  },
+  "completedAt": "2026-09-14T05:32:23.794Z",
+  "readOnlyCountsUnchanged": true
+}
