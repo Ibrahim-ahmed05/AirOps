@@ -1,6 +1,6 @@
 # Performance measurements (14 September 2026)
 
-This is the current evidence report. Older estimates and the earlier “not run” audit are retained under `docs/archive/2026-09-03/` only as history and must not be used as the project status.
+This is the current evidence report. All capacity figures below come from executed, dated test runs whose raw outputs are stored under `results/2026-09-14/`.
 
 ## Test setup
 

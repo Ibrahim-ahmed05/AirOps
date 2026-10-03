@@ -7,7 +7,7 @@
 - [Vercel deployment guide](docs/deployment-vercel.md)
 - [Raw dated test evidence](results/)
 
-The September 3 estimates and conflicting completion reports have been superseded. Originals are retained in `docs/archive/2026-09-03` for traceability. The existing Word report is also historical. Use the current Markdown report for scoring. A live production URL has not yet been published; configuration alone is not a deployment.
+Earlier estimates and conflicting completion reports have been removed. Use the current Markdown report and dated raw results for scoring. The application is deployed at https://air-ops-eight.vercel.app with its API at https://air-ops-api-f6qt.vercel.app.
 
 AirOps is a deliberately small but production-realistic airline operations dashboard designed specifically for scalability, load-testing, frontend performance, database performance, failure-handling, and production-readiness experiments.
 
