@@ -118,7 +118,7 @@ const MetricCard = memo(function MetricCard({
 // ─── Page ──────────────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
 
   /**
    * refetchInterval drives the 10-second cadence.

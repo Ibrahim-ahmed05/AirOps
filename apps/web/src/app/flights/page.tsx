@@ -167,7 +167,7 @@ const FlightTableRow = memo(
 function FlightsTableContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
 
   // ── Filter state ──────────────────────────────────────────────────────────
   const [searchInput, setSearchInput] = useState(searchParams.get('search') || '');

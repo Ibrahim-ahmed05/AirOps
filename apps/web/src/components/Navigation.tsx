@@ -9,7 +9,7 @@ export function Navigation() {
   const pathname = usePathname();
   const [apiStatus, setApiStatus] = useState<{ server: boolean; db: boolean } | null>(null);
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
 
   useEffect(() => {
     let isMounted = true;

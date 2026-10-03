@@ -63,7 +63,7 @@ interface FlightDetailsData {
 export default function FlightDetailsPage() {
   const params = useParams();
   const id = params.id as string;
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
 
   const [isUpdateOpen, setIsUpdateOpen] = useState(false);
   const [newStatus, setNewStatus] = useState('BOARDING');

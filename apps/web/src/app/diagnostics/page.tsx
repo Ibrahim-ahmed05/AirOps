@@ -31,7 +31,7 @@ export default function DiagnosticsPage() {
   const [lastCheck, setLastCheck] = useState<string | null>(null);
   const [autoRefresh, setAutoRefresh] = useState<boolean>(true);
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+  const apiBaseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
 
   const checkHealth = useCallback(async () => {
     setLoading(true);
